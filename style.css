@@ -1,0 +1,2337 @@
+/* Clean, Minimalist Design for Tyrone Treadwell Fitness Coach Website - Dark Theme */
+
+/* Import better Google Font (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+/* CSS Variables for consistent styling */
+:root {
+    --accent: #c0a062; /* modern bronze accent color */
+    --gold: #c0a062; /* backup for any gold references */
+    --dark-bg: #000000;
+    --darker-bg: #050505;
+    --container-bg: #0a0a0a;
+    --text-primary: #f0f0f0;
+    --text-secondary: #cccccc;
+    --base-font-size: 16px; /* Kept base size, ensure relative units scale well */
+    --heading-scale: 1;
+    --container-width: 1140px; /* Slightly reduce max container width */
+    --section-padding: clamp(30px, 4vw, 60px); /* Reduced section padding */
+}
+
+/* Reset and base styles */
+html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+}
+
+body, html {
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--text-primary);
+    background: var(--dark-bg);
+    line-height: 1.6;
+    font-weight: 300;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh;
+}
+
+/* Layout containers - consistent across sections */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Section styles with consistent spacing */
+section, .section {
+    padding: var(--section-padding) 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: visible !important;
+    min-height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+section:first-of-type {
+    padding-top: 6rem;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: #fff;
+    letter-spacing: 0.03125rem;
+    line-height: 1.3;
+}
+
+/* Subtle underline for section headings */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3.75rem;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: clamp(1.25rem, 2vw, 1.8rem);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.03125rem;
+}
+
+p {
+    margin: 0 0 1.25rem 0;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Consistent spacing for responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+    
+    h2 {
+        font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    }
+    
+    h3 {
+        font-size: clamp(1.125rem, 1.8vw, 1.6rem);
+    }
+    
+    p {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.9375rem;
+    }
+    
+    section {
+        padding: 2.5rem 0;
+    }
+    
+    h2 {
+        font-size: clamp(1.25rem, 2vw, 1.8rem);
+    }
+    
+    h3 {
+        font-size: clamp(1rem, 1.5vw, 1.4rem);
+    }
+}
+
+/* Consistent visibility for all content areas */
+main, #main-content {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* Animation Styles for AOS Library */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+}
+
+[data-aos="fade-down"] {
+    transform: translateY(-30px);
+}
+
+[data-aos="fade-down"].aos-animate {
+    transform: translateY(0);
+}
+
+[data-aos="fade-right"] {
+    transform: translateX(-30px);
+}
+
+[data-aos="fade-right"].aos-animate {
+    transform: translateX(0);
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(30px);
+}
+
+[data-aos="fade-left"].aos-animate {
+    transform: translateX(0);
+}
+
+/* Favicon placeholder - add actual favicon reference here */
+/* 
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+*/
+
+/* Progress bar - minimal but effective */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 1001;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Add consistent vertical spacing between sections */
+section + section {
+    margin-top: 0;
+}
+
+/* Header and Navigation */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0.8rem 0;
+    backdrop-filter: blur(10px);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 1.25rem;
+}
+
+.navbar a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding: 0.3125rem 0;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after, .navbar a:focus::after {
+    width: 100%;
+}
+
+.navbar a:hover, .navbar a:focus {
+    color: #fff;
+}
+
+/* Section titles */
+.section-title {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+/* Hero Section - Strong layout fix */
+.hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+    background-color: #000000;
+    padding: 6rem 5% 4rem;
+    width: 100%;
+    margin: 0 auto;
+    max-width: var(--container-width);
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.hero-left {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+}
+
+.hero-slider {
+    width: 100%;
+    height: auto;
+    max-width: 28rem;
+    aspect-ratio: 3/4;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3), 0 0.5rem 0.5rem rgba(192, 160, 98, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.coach-name {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+}
+
+.coach-title {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.15rem;
+}
+
+.tagline {
+    font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+}
+
+/* Enhanced image styling */
+.profile-image img, .about-image img, img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.8);
+    border: 1px solid #222;
+    transition: transform 0.5s ease;
+}
+
+.profile-image:hover img, .about-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Enhanced CTA Button styling with animation */
+.cta-button {
+    display: inline-block !important;
+    align-self: flex-start !important;
+    padding: 0.875rem 1.75rem !important;
+    background-color: var(--accent) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.0625rem !important;
+    border-radius: 3.125rem !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid var(--accent) !important;
+    text-decoration: none !important;
+    text-align: center !important;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 0.625rem 1.25rem rgba(192, 160, 98, 0.3);
+}
+
+/* Scroll down indicator */
+.scroll-down {
+    position: absolute;
+    bottom: 1.875rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-down i {
+    display: block;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 6.25rem 1.25rem 3.75rem;
+        text-align: center;
+        gap: 1.875rem;
+    }
+    
+    .hero-left {
+        order: 1;
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero-right {
+        order: 2;
+        max-width: 100%;
+    }
+    
+    .hero-slider {
+        max-width: 100%;
+        max-height: 31.25rem;
+    }
+    
+    .coach-name {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    
+    .coach-title {
+        font-size: clamp(0.875rem, 1.2vw, 1.2rem);
+        margin-bottom: 1.5625rem;
+    }
+    
+    .tagline {
+        font-size: clamp(1.125rem, 2vw, 1.8rem);
+        margin-bottom: 2.1875rem;
+    }
+    
+    .cta-button {
+        align-self: center !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px 15px 40px;
+    }
+    
+    .hero-slider {
+        max-height: 400px;
+    }
+    
+    .coach-name {
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .tagline {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* 3D Globe Hero Styling */
+.globe-hero-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 30px 20px;
+    height: 100vh;
+}
+
+.globe-container {
+    width: 100%;
+    height: 400px;
+    margin: 20px auto;
+    position: relative;
+    max-width: 400px;
+    cursor: grab;
+}
+
+.globe-container:active {
+    cursor: grabbing;
+}
+
+.globe-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    outline: none;
+}
+
+/* Hero content positioned to surround the globe */
+.hero .hero-content {
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.hero .cta-button {
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+}
+
+/* Orbital path effect */
+.globe-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(192, 160, 98, 0.2);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Drag to rotate indicator */
+.drag-indicator {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Responsive adjustments for globe layout */
+@media (min-width: 768px) {
+    .globe-container {
+        height: 500px;
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .globe-hero-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 120px;
+    }
+    
+    .hero .hero-content {
+        flex: 1;
+        text-align: left;
+        max-width: 500px;
+        padding-right: 40px;
+    }
+    
+    .globe-container {
+        flex: 1;
+        height: 500px;
+        margin: 0;
+    }
+    
+    .hero .cta-button {
+        margin-top: 40px;
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .globe-container {
+        height: 300px;
+    }
+    
+    .globe-hero-container {
+        padding: 100px 20px 40px;
+    }
+}
+
+/* Video Section */
+.video-section {
+    padding: var(--section-padding) 0;
+    background-color: #000000;
+    position: relative;
+    text-align: center;
+}
+
+.video-container {
+    max-width: 50rem;
+    margin: 2rem auto 0;
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(192, 160, 98, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.8), 0 0 1.25rem rgba(192, 160, 98, 0.3);
+}
+
+.video-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover {
+    transform: scale(1.02);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: rgba(192, 160, 98, 0.2);
+}
+
+.play-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 0.9375rem 0 0.9375rem 1.5625rem;
+    border-color: transparent transparent transparent var(--accent);
+    transition: all 0.3s ease;
+}
+
+/* Video Caption */
+.video-caption {
+    text-align: center;
+    margin-top: 1rem;
+    color: #aaaaaa;
+    font-style: italic;
+    font-size: 0.9rem;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Video Modal */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.video-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 85%;
+    max-width: 800px;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6), 0 0 18px rgba(192, 160, 98, 0.1);
+    border: 1px solid rgba(192, 160, 98, 0.1);
+}
+
+.video-modal-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -40px;
+    right: -5px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-modal-close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Direct Video Embed Styling */
+.video-embed-container {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    aspect-ratio: 16/9 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background-color: #000000 !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1 !important;
+    max-width: 50rem;
+    margin: 2rem auto 0;
+}
+
+.video-embed-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(192, 160, 98, 0.3);
+}
+
+.video-embed-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    background-color: #000;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Video play overlay - DISABLED */
+.video-play-overlay {
+    display: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: -1;
+}
+
+/* Responsive adjustments for video */
+@media (max-width: 768px) {
+    .video-section {
+        padding: 80px 20px;
+    }
+    
+    .video-container, 
+    .video-embed-container {
+        max-width: 100%;
+    }
+    
+    .play-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .play-button::before {
+        border-width: 12px 0 12px 20px;
+    }
+    
+    .video-caption {
+        font-size: 1rem;
+        margin-top: 15px;
+        padding: 0 20px;
+    }
+    
+    .video-play-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .video-play-button::after {
+        border-width: 12px 0 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-section {
+        padding: 60px 15px;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .play-button::before {
+        border-width: 10px 0 10px 16px;
+    }
+    
+    .video-play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .video-play-button::after {
+        border-width: 10px 0 10px 16px;
+    }
+}
+
+/* Add grid system for consistent layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.grid-item-left {
+    grid-column: 1 / 7;
+}
+
+.grid-item-right {
+    grid-column: 7 / 13;
+}
+
+.grid-item-full {
+    grid-column: 1 / 13;
+}
+
+@media (max-width: 768px) {
+    .grid-item-left,
+    .grid-item-right {
+        grid-column: 1 / 13;
+    }
+    
+    .grid-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 60px 0;
+    }
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    margin-bottom: 6rem; /* Add more space below the about container */
+}
+
+.about-image {
+    flex: 1 1 22rem;
+    max-width: 28rem;
+    margin: 0 auto;
+    transition: transform 0.5s ease;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    object-fit: cover;
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(192, 160, 98, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    max-width: 100%;
+    display: block;
+}
+
+.about-image:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.5), 0 0 1.875rem rgba(192, 160, 98, 0.3);
+}
+
+.about-text-container {
+    flex: 1 1 28rem;
+    text-align: left;
+    background-color: #111111;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(192, 160, 98, 0.2);
+    max-width: 34rem;
+}
+
+.about-text-container p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+}
+
+.about-text-container p:last-child {
+    margin-bottom: 1.5rem;
+}
+
+.about-text-container h3 {
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.about-text-container h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5rem;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* About section CTA */
+.about-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.about-cta .cta-button {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #000000;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent);
+}
+
+.about-cta .cta-button:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px;
+        margin-bottom: 4rem; /* More space on mobile */
+    }
+    
+    .about-image {
+        margin-bottom: 0;
+        max-width: 450px;
+        width: 100%;
+    }
+    
+    .about-text-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px;
+    }
+    
+    .about-text-container p {
+        font-size: 1.1rem;
+    }
+    
+    .about-text-container h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-text-container {
+        padding: 25px 20px;
+    }
+    
+    .about-text-container p {
+        font-size: 1rem;
+    }
+    
+    .about-image img {
+        border-radius: 12px;
+    }
+}
+
+/* Testimonials Section */
+.testimonials-section,
+.quotes {
+    padding: var(--section-padding) 0;
+    background-color: #000000;
+    position: relative;
+    z-index: 1; /* Ensure proper stacking context */
+}
+
+.testimonials-container,
+.quote-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.testimonial-card,
+.quote {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background-color: #0a0a0a;
+    border-radius: 0.6rem;
+    padding: 1.8rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(192, 160, 98, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.testimonial-card:hover,
+.quote:hover {
+    transform: translateY(-0.625rem);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.4), 0 0 1.25rem rgba(192, 160, 98, 0.15);
+    border: 1px solid rgba(192, 160, 98, 0.2);
+}
+
+.testimonial-card::before,
+.quote::before {
+    content: '"';
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 0.625rem;
+    left: 1.25rem;
+    font-size: 4rem;
+    color: rgba(192, 160, 98, 0.1);
+    line-height: 1;
+}
+
+.testimonial-content,
+.quote p:first-child {
+    flex: 1;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    font-style: italic;
+}
+
+.testimonial-author,
+.quote p:last-child {
+    margin-top: auto;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+}
+
+.testimonial-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 0.3125rem;
+}
+
+.testimonial-divider {
+    width: 2.5rem;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 1.25rem auto;
+    border-radius: 2px;
+}
+
+/* Responsive styles for testimonials */
+@media (max-width: 992px) {
+    .testimonials-grid,
+    .quote-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-section,
+    .quotes {
+        padding: 80px 0;
+    }
+    
+    .testimonials-grid,
+    .testimonials-container,
+    .quote-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .testimonial-card,
+    .quote {
+        padding: 30px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-section,
+    .quotes {
+        padding: 60px 0;
+    }
+    
+    .testimonial-card,
+    .quote {
+        padding: 25px 20px;
+    }
+    
+    .testimonial-content p,
+    .quote p {
+        font-size: 1rem;
+    }
+}
+
+/* Application/Contact Form Section */
+.form-section,
+.application-section {
+    padding: var(--section-padding) 0;
+    background-color: #000000;
+    position: relative;
+}
+
+.form-container,
+.application-container {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.form-card {
+    background-color: #0a0a0a;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(192, 160, 98, 0.1);
+    overflow: hidden;
+    padding: 0;
+    margin-top: 1.875rem;
+}
+
+.form-intro {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.form-intro h3 {
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+}
+
+.form-intro p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.google-form-container {
+    position: relative;
+    width: 100%;
+    height: 38rem;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.google-form-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Section headings */
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+    display: inline-block;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+}
+
+.section-heading h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* Responsive styles for application form */
+@media (max-width: 768px) {
+    .form-section,
+    .application-section {
+        padding: 80px 0;
+    }
+    
+    .form-card {
+        margin-top: 20px;
+    }
+    
+    .google-form-container {
+        height: 550px;
+    }
+    
+    .form-intro h3 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section,
+    .application-section {
+        padding: 60px 0;
+    }
+    
+    .google-form-container {
+        height: 500px;
+    }
+    
+    .form-intro h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent);
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top i {
+    font-size: 1.5rem;
+}
+
+/* Improved mobile responsiveness for all sections */
+@media (max-width: 768px) {
+    section {
+        padding: 80px 0;
+    }
+    
+    section:first-of-type {
+        padding-top: 100px;
+    }
+    
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .scroll-to-top i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    section:first-of-type {
+        padding-top: 90px;
+    }
+}
+
+/* Footer Section */
+footer {
+    background-color: #050505; /* Slightly darker background */
+    padding: 2.5rem 0 1.5rem; /* Adjusted padding */
+    text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(192, 160, 98, 0.15); /* Slightly more visible border */
+    margin-top: var(--section-padding); /* Add margin above footer */
+}
+
+.footer-content {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.footer-logo {
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+    max-width: 10rem;
+    height: auto;
+    border-radius: 0;
+}
+
+.footer-social {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Use user-specified gap */
+}
+
+.social-icon {
+    display: inline-flex; /* Keep as flex container for alignment */
+    align-items: center;
+    justify-content: center;
+    /* width/height removed - let font-size dictate size */
+    font-size: 1.8rem; /* Set icon size (adjust as needed within 1.5-2rem) */
+    color: #c9ae68; /* User-specified gold color */
+    background-color: transparent; /* Remove background */
+    border-radius: 50%; /* Keep if you want a circular boundary on hover later */
+    transition: all 0.3s ease;
+    text-decoration: none;
+    padding: 0.5rem; /* Add some padding for easier clicking */
+    line-height: 1; /* Ensure vertical alignment */
+}
+
+.social-icon:hover {
+    color: #ffffff; /* User-specified hover color */
+    transform: scale(1.1); /* User-specified hover scale */
+    background-color: transparent; /* Ensure no background on hover */
+    box-shadow: none; /* Remove shadow from previous edit */
+}
+
+.social-icon i { /* Target the icon itself if using Font Awesome etc. */
+   /* line-height: 1; Moved to parent .social-icon */
+   display: block; /* Ensure icon behaves predictably */
+}
+
+.footer-links {
+    margin-bottom: 1.5rem; /* Reduced margin */
+}
+
+.footer-links a {
+    color: #aaaaaa;
+    margin: 0 0.75rem; /* Reduced margin */
+    text-decoration: none;
+    font-size: 0.9rem; /* Increased size slightly */
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.footer-copyright {
+    color: #888888; /* Slightly lighter gray */
+    font-size: 0.9rem; /* Increased size slightly */
+    margin-top: 1.5rem; /* Increased margin */
+    letter-spacing: 0.5px; /* Add subtle letter spacing */
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 3.125rem 0 1.25rem;
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        margin: 0.3125rem 0.625rem;
+    }
+}
+
+/* Normalize Image & Video Scaling */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Improved mobile responsiveness for all sections */
+@media (max-width: 992px) {
+    .testimonials-grid,
+    .quote-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    :root {
+        --heading-scale: 0.9;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3.75rem 0;
+    }
+    
+    section:first-of-type {
+        padding-top: 6.25rem;
+    }
+    
+    .scroll-to-top {
+        width: 2.5rem;
+        height: 2.5rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+    
+    .scroll-to-top i {
+        font-size: 1.2rem;
+    }
+    
+    .testimonials-grid,
+    .testimonials-container,
+    .quote-container {
+        grid-template-columns: 1fr;
+        gap: 1.5625rem;
+    }
+    
+    .testimonial-card,
+    .quote {
+        padding: 1.875rem;
+        max-width: 31.25rem;
+        margin: 0 auto;
+    }
+    
+    :root {
+        --heading-scale: 0.8;
+        --section-padding: clamp(2.5rem, 4vw, 3.75rem);
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 3rem 0;
+    }
+    
+    section:first-of-type {
+        padding-top: 5.625rem;
+    }
+    
+    .testimonial-card,
+    .quote {
+        padding: 1.5625rem 1.25rem;
+    }
+    
+    .testimonial-content p,
+    .quote p {
+        font-size: 0.9375rem;
+    }
+    
+    :root {
+        --heading-scale: 0.7;
+        --section-padding: clamp(2rem, 3vw, 3rem);
+    }
+}
+
+/* Ensure content is visible and properly spaced - but with proper sizing */
+.container, 
+.video-container,
+.about-container,
+.testimonials-container,
+.quote-container,
+.application-container,
+.form-container,
+.footer-content {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix stacking order */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    z-index: 100;
+}
+
+.hero {
+    z-index: 1;
+}
+
+#video, #about, #testimonials, #apply, footer, 
+.video-section, .about-section, .testimonials-section, .application-section,
+.quotes, .about-container, .form-container, .form-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 1;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+/* Add section dividers for visual clarity */
+section:not(:last-child) {
+    border-bottom: 1px solid rgba(192, 160, 98, 0.1);
+}
+
+/* Fix for specific sections */
+.video-section,
+.about-section, 
+.testimonials-section,
+.quotes,
+.application-section,
+.form-section {
+    padding: 80px 0;
+    margin: 0;
+    position: relative;
+    background-color: #000000;
+}
+
+/* Ensure content is visible and properly spaced */
+.container, 
+.video-container,
+.about-container,
+.testimonials-container,
+.quote-container,
+.application-container,
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Fix stacking order */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    z-index: 100;
+}
+
+.hero {
+    z-index: 1;
+}
+
+#video, #about, #testimonials, #apply, footer {
+    z-index: 1;
+}
+
+/* Critical Video Autoplay Fix */
+#coach-video {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 10 !important;
+    background-color: #000000 !important;
+    pointer-events: none !important;
+    border-radius: 10px !important;
+}
+
+/* Add a general rule for better box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Global overflow protection for text */
+p, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Container consistency */
+.container {
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Testimonials Grid Fix */
+.testimonials-section,
+.quotes {
+    padding: var(--section-padding) 0;
+    background-color: #000000;
+    position: relative;
+    z-index: 1; /* Ensure proper stacking context */
+}
+
+.testimonials-container,
+.quote-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.testimonial-card,
+.quote {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background-color: #0a0a0a;
+    border-radius: 0.6rem;
+    padding: 1.8rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(192, 160, 98, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Improved responsive styles */
+@media (max-width: 992px) {
+    .testimonials-grid,
+    .testimonials-container,
+    .quote-container {
+        gap: 20px;
+    }
+    
+    .testimonial-card,
+    .quote {
+        flex: 1 1 280px;
+    }
+    
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-image, 
+    .about-text-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile navigation styles */
+    .navbar ul {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    
+    .navbar li {
+        margin: 0.5rem 0;
+    }
+    
+    /* Hero section mobile styling */
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 2rem;
+    }
+    
+    .hero-left, 
+    .hero-right {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-left {
+        order: 1;
+        align-items: center;
+    }
+    
+    .hero-right {
+        order: 2;
+    }
+    
+    /* Testimonials mobile styling */
+    .testimonials-container,
+    .quote-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .testimonial-card,
+    .quote {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    /* Typography centering on mobile */
+    .section-heading,
+    h1, h2, h3,
+    p {
+        text-align: center;
+    }
+    
+    /* Fix container spacing on mobile */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Prevent text overflow */
+    .testimonial-text,
+    .about-text {
+        font-size: 0.95rem;
+    }
+    
+    /* Fix About section spacing */
+    .about-container {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screen adjustments */
+    .testimonial-card,
+    .quote {
+        padding: 1.5rem;
+    }
+    
+    .hero {
+        padding: 30px 15px;
+    }
+    
+    .coach-name {
+        font-size: 2.5rem;
+    }
+    
+    .coach-title {
+        font-size: 1rem;
+    }
+    
+    .tagline {
+        font-size: 1.3rem;
+    }
+}
+
+/* Section spacing to prevent overlap */
+section, .section {
+    position: relative;
+    overflow: visible;
+    padding: var(--section-padding) 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Add clear spacing between sections */
+section + section {
+    padding-top: var(--section-padding);
+}
+
+/* Ensure sections have proper stacking context */
+#about, #testimonials, #contact, #intro-video {
+    position: relative;
+    z-index: 1;
+}
+
+/* Prevent hero overflow */
+.hero {
+    overflow: hidden;
+}
+
+/* Fix for section overlap issues */
+main section {
+    clear: both;
+    position: relative;
+    margin-bottom: 3rem; /* Add significant spacing between main sections */
+    padding-bottom: 1rem; /* Add padding at bottom of each section */
+    overflow: visible; /* Ensure content doesn't get cut off */
+}
+
+/* Specific fix for About section */
+#about {
+    padding-bottom: 6rem; /* Significant padding to ensure room for the button */
+    margin-bottom: 6rem; /* Large margin to create space between sections */
+    position: relative;
+}
+
+/* Testimonials section specific styling */
+#testimonials {
+    margin-top: 8rem; /* Extra large margin to ensure space above testimonials */
+    padding-top: 2rem;
+    position: relative;
+}
+
+/* CTA Button positioning fix */
+.about-container + .cta-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto; /* Center the button */
+    position: relative;
+    z-index: 6; /* Keep this to ensure it's above other elements */
+    clear: both; /* Keep this to ensure it clears floats */
+    top: auto; /* Ensure it's not absolutely positioned */
+    left: auto; /* Ensure it's not absolutely positioned */
+    transform: none; /* Remove any transforms */
+    position: relative; /* Ensure it's in the normal flow */
+    bottom: auto; /* Reset any bottom positioning */
+}
+
+/* Ensure testimonials title is properly positioned */
+#testimonials h2,
+.quotes h2 {
+    margin-top: 2rem;
+    position: relative;
+    z-index: 5; /* Match about section z-index */
+    clear: both;
+}
+
+/* Extra clearfix for containers */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Make sure about-text-container doesn't overflow */
+.about-text-container {
+    margin-bottom: 3rem; /* Ensure text has clear bottom margin */
+}
+
+/* Fix for testimonial cards overlapping */
+.quote-container {
+    padding-top: 2rem; /* Add space above testimonial cards */
+}
+
+@media (max-width: 768px) {
+    /* Additional mobile fixes */
+    main section {
+        margin-bottom: 4rem; /* Even more spacing on mobile */
+    }
+    
+    #about {
+        padding-bottom: 8rem; /* Even more padding on mobile */
+        margin-bottom: 8rem; /* Even more margin on mobile */
+    }
+    
+    #testimonials {
+        margin-top: 10rem; /* More margin above testimonials on mobile */
+    }
+    
+    .about-container + .cta-button {
+        margin-top: 5rem; /* More margin on mobile */
+    }
+    
+    #testimonials h2,
+    .quotes h2 {
+        margin-top: 3rem; /* More space for section titles on mobile */
+        margin-bottom: 2rem;
+    }
+}
+
+/* Add a specific container for the button in the About section */
+.cta-button-container {
+    text-align: center;
+    margin-top: 3rem; /* Add space above the button */
+    margin-bottom: 3rem; /* Add space below the button */
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    clear: both;
+}
+
+/* Modify the container in the About section */
+#about .container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make the about container take up appropriate space */
+#about .about-container {
+    margin-bottom: 3rem; /* Space between text and button */
+    width: 100%;
+}
+
+/* Ensure the button appears after the about content */
+#about .cta-button {
+    order: 3; /* Ensure it comes after other content */
+    margin-top: 1rem; /* Space above button */
+}
+
+@media (max-width: 768px) {
+    /* Mobile adjustments */
+    .about-container {
+        margin-bottom: 4rem; /* More space on mobile */
+    }
+    
+    .about-container + .cta-button {
+        margin-top: 2rem; /* Add more space on top for mobile */
+    }
+}
+
+/* Extra safety margin for the very small screens */
+@media (max-width: 480px) {
+    #about .about-container {
+        margin-bottom: 5rem;
+    }
+    
+    #about .cta-button {
+        margin-top: 3rem;
+    }
+}
+
+/* Add a specific container for the button in the About section */
+.about-cta-wrapper {
+    position: relative;
+    text-align: center;
+    margin-top: 4rem; /* Large top margin to separate from text */
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    clear: both;
+}
+
+/* Style the CTA button itself */
+.about-cta-wrapper .cta-button {
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    #about {
+        padding-bottom: 8rem; /* Even more padding on mobile */
+        margin-bottom: 8rem; /* Even more margin on mobile */
+    }
+    
+    #testimonials {
+        margin-top: 10rem; /* More margin above testimonials on mobile */
+    }
+    
+    .about-cta-wrapper {
+        margin-top: 5rem; /* More margin on mobile */
+    }
+}
+
+/* Small screen specific fixes */
+@media (max-width: 480px) {
+    /* Force text to break properly */
+    .about-text-container p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Fix spacing for very small screens */
+    #about {
+        padding-bottom: 10rem;
+        margin-bottom: 10rem;
+    }
+    
+    #testimonials {
+        margin-top: 12rem;
+    }
+    
+    /* Prevent small screen header overlap */
+    #testimonials h2 {
+        padding-top: 3rem;
+        margin-top: 3rem;
+    }
+}
+
+/* Fix for the unified message layout */
+.about-text-container.unified-message {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 2rem;
+}
+
+/* Force all paragraphs to stay together */
+.about-text-container.unified-message p {
+    position: relative;
+    z-index: 5;
+}
+
+/* Ensure the CTA wrapper stays completely separate from text */
+.about-cta-wrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    clear: both;
+    z-index: 1;
+}
+
+/* Style the button itself */
+.about-cta-wrapper .cta-button {
+    display: inline-block;
+    position: relative;
+}
+
+/* About container fix */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* Additional fixes for mobile */
+@media (max-width: 768px) {
+    /* Force the text content to display as a single unit */
+    .about-text-container.unified-message {
+        display: block;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+    
+    /* Force all paragraphs to display in order */
+    .about-text-container.unified-message p {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Move CTA further down */
+    .about-cta-wrapper {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Fix the about container layout */
+    .about-container {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Style for the paragraphs wrapper */
+.all-paragraphs {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+/* Force the paragraphs to stay together */
+.all-paragraphs .about-text {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 1rem;
+}
+
+.all-paragraphs .about-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Mobile adjustments for the paragraphs wrapper */
+@media (max-width: 768px) {
+    .all-paragraphs {
+        margin-bottom: 0;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    /* Increase spacing between the paragraphs and the button on mobile */
+    .about-text-container.unified-message {
+        margin-bottom: 0;
+    }
+    
+    /* Move the CTA wrapper further down on mobile */
+    .about-cta-wrapper {
+        margin-top: 5rem; /* Increased from 4rem */
+    }
+}
+
+/* Completely separate CTA section */
+#about-cta {
+    padding: 3rem 0;
+    background-color: #000000;
+    margin-top: -2rem; /* Pull up slightly to reduce gap */
+    position: relative;
+    z-index: 10;
+    border-top: none;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Ensure the about section text is contained properly */
+.text-only-wrapper {
+    position: relative;
+    z-index: 5;
+    display: block;
+    width: 100%;
+}
+
+/* Fix section margins to prevent gaps */
+#about {
+    margin-bottom: 0;
+    padding-bottom: 3rem;
+}
+
+#testimonials {
+    padding-top: 5rem; /* Add more space at the top */
+    margin-top: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #about-cta {
+        padding: 2rem 0;
+        margin-top: -1rem;
+    }
+    
+    #testimonials {
+        padding-top: 6rem;
+    }
+    
+    .text-only-wrapper p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Small screen adjustments */
+@media (max-width: 480px) {
+    .text-only-wrapper {
+        padding-bottom: 1rem;
+    }
+    
+    #about-cta {
+        padding: 1.5rem 0;
+    }
+}
+
+/* Single text block styling to prevent button overlap */
+.single-text-block {
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 1rem; 
+    background-color: #111111;
+    border-radius: 0.6rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    text-align: left;
+}
+
+/* Fix spacing between sections */
+#about-cta {
+    clear: both;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid rgba(192, 160, 98, 0.1);
+    border-bottom: 1px solid rgba(192, 160, 98, 0.1);
+    background-color: rgba(10, 10, 10, 0.5);
+}
+
+/* Remove previous wrapper styles that might interfere */
+.text-only-wrapper {
+    display: none;
+}
+
+.all-paragraphs {
+    display: none;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+    .single-text-block {
+        padding: 0.75rem;
+        margin-bottom: 4rem;
+    }
+    
+    #about-cta {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .single-text-block {
+        padding: 0.5rem;
+        margin-bottom: 5rem;
+        font-size: 0.9rem;
+    }
+    
+    #about-cta {
+        margin-top: 5rem;
+    }
+}

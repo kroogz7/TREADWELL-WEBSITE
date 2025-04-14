@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tyrone Treadwell - Professional Fitness Coach. Transform your body and life with personalized coaching, proven results, and a sustainable approach to fitness.">
+    <meta name="keywords" content="fitness coach, personal trainer, body transformation, muscle building, weight loss, Tyrone Treadwell">
+    <meta name="author" content="Tyrone Treadwell">
+    <meta property="og:title" content="Tyrone Treadwell - Fitness Coach">
+    <meta property="og:description" content="Transform your body and life with personalized fitness coaching.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tyronetreadwell.com">
+    <meta property="og:image" content="assets/images/mirror flex.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Tyrone Treadwell - Fitness Coach | Transform Your Body</title>
+    
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    
+    <!-- Main stylesheet - must come before other stylesheets to ensure dark theme applies first -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- External libraries CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    
+    <!-- Critical layout fixes - loaded last to override everything -->
+    <link rel="stylesheet" href="new-styles.css">
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-container" style="opacity: 0; height: 4px; overflow: hidden;">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <button class="mobile-menu-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-left">
+            <h1 class="coach-name">TYRONE<br>TREADWELL</h1>
+            <p class="coach-title">FITNESS COACH</p>
+            <p class="tagline">Transform Your Body,<br>Transform Your Life</p>
+            <a href="#contact" class="cta-button" data-aos="fade-up" data-aos-delay="500">Start Your Transformation</a>
+        </div>
+        
+        <div class="hero-right">
+            <!-- Image slider -->
+            <div class="hero-slider" data-aos="fade-left" data-aos-delay="300">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide ken-burns-slide">
+                            <img src="assets/images/mirror flex.jpg" alt="Tyrone flexing in the mirror" />
+                        </div>
+                        <div class="swiper-slide ken-burns-slide">
+                            <img src="assets/images/lifting.jpg" alt="Tyrone lifting weights" />
+                        </div>
+                        <div class="swiper-slide ken-burns-slide">
+                            <img src="assets/images/abs.jpg" alt="Tyrone showing abs definition" />
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <span>↓</span>
+        </div>
+    </section>
+
+    <!-- Video Introduction Section -->
+    <section id="intro-video" class="video-section">
+        <div class="container">
+            <h2 data-aos="fade-up">Meet Your Coach</h2>
+            <div class="video-embed-container" data-aos="fade-up" data-aos-delay="300">
+                <video id="coach-video" autoplay muted playsinline loop poster="assets/images/video-poster.jpg" controls="false">
+                    <source src="assets/images/workingout2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="video-caption">Watch Tyrone in action — no filters, no fluff. Real results through dedication.</p>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- About Section -->
+        <section id="about" class="content about-me" data-aos="fade-up">
+            <div class="container">
+                <h2 data-aos="fade-up">About Me</h2>
+                
+                <div class="about-container">
+                    <div class="about-image" data-aos="fade-right" data-aos-delay="200">
+                        <img src="me.jpg" alt="Tyrone Treadwell Training" loading="lazy">
+                    </div>
+                    
+                    <div class="about-text-container unified-message" data-aos="fade-left" data-aos-delay="200">
+                        <div class="single-text-block">
+                            Hey, I'm Tyrone Treadwell, and I know how overwhelming it can feel when you're just starting your fitness journey. With so much information out there, it's easy to feel lost and unsure of where to begin.
+                            <br><br>
+                            That's exactly why I became a coach—to help people like you who may not have the guidance or knowledge to reach their goals.
+                            <br><br>
+                            My goal isn't just to help you build muscle or lose weight; it's to mentor you through the process of creating a <strong>sustainable, healthier lifestyle</strong>. Fitness is more than just lifting weights—it's about feeling your best, gaining confidence, and making changes that last.
+                            <br><br>
+                            Whether you're stepping into the gym for the first time or looking for a structured plan to finally see results, I'm here to guide you every step of the way. Let's <strong>build your best form</strong>—inside and out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section - Completely separate from About -->
+        <section id="about-cta" class="cta-section">
+            <div class="container">
+                <blockquote class="philosophy-quote" data-aos="fade-up" data-aos-delay="200">
+                    <p class="quote-text">"No citizen has any right to be an amateur in the matter of physical training."</p>
+                    <p class="quote-author">— Marcus Aurelius</p>
+                </blockquote>
+                <div class="cta-container">
+                    <a href="#contact" class="cta-button" data-aos="fade-up" data-aos-delay="400">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="quotes">
+            <div class="container">
+                <h2 data-aos="fade-up">Testimonials</h2>
+                
+                <div class="quote-container" data-aos="fade-up" data-aos-delay="200">
+                    <blockquote class="quote" data-aos="fade-up" data-aos-delay="300">
+                        <p class="testimonial-text">"Tyrone's coaching transformed my fitness journey—I've lost 30 pounds and gained incredible strength!"</p>
+                        <p class="quote-author">— Allison T.</p>
+                    </blockquote>
+                    
+                    <blockquote class="quote" data-aos="fade-up" data-aos-delay="400">
+                        <p class="testimonial-text">"His personalized approach and constant motivation helped me achieve fitness goals I never thought possible."</p>
+                        <p class="quote-author">— Hershey E.</p>
+                    </blockquote>
+                    
+                    <blockquote class="quote" data-aos="fade-up" data-aos-delay="500">
+                        <p class="testimonial-text">"Best coach I've ever worked with—in just 3 months, my body completely transformed."</p>
+                        <p class="quote-author">— Aldren K.</p>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="form-section">
+            <div class="container">
+                <h2 data-aos="fade-up">Apply for Coaching</h2>
+                
+                <div class="form-container" data-aos="fade-up" data-aos-delay="300">
+                    <div class="form-wrapper">
+                        <h3 class="form-heading">Take the First Step</h3>
+                        <p class="form-intro">Fill out this quick application to see if we're a good fit for your fitness journey.</p>
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe4JteoNHexuxLDCH6qDCrjb0taSk4zZ6Ftk5j2FNKvSe8wyQ/viewform?embedded=true" 
+                                width="100%" 
+                                height="800" 
+                                frameborder="0" 
+                                marginheight="0" 
+                                marginwidth="0"
+                                loading="lazy"
+                                title="Coaching Application Form">
+                            Loading…
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.instagram.com/swoletyrone/" target="_blank" rel="noopener noreferrer" aria-label="Follow Tyrone on Instagram" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/discover/tyrone-treadwell" target="_blank" rel="noopener noreferrer" aria-label="Follow Tyrone on TikTok" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.youtube.com/@TheTyroneTreadwell" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to Tyrone on YouTube" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            
+            <p class="footer-copyright">&copy; 2025 Tyrone Treadwell - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta">
+        <a href="#contact" class="mobile-cta-button">Start Now</a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+
+    <!-- Inline Script for Slider Optimization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // First completely remove any existing pagination dots
+            const paginationEl = document.querySelector('.swiper-pagination');
+            if (paginationEl) {
+                paginationEl.innerHTML = '';
+                
+                // Create our own custom pagination dots
+                for (let i = 0; i < 3; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('custom-pagination-bullet');
+                    if (i === 0) dot.classList.add('active');
+                    dot.dataset.index = i;
+                    paginationEl.appendChild(dot);
+                }
+            }
+            
+            // Add custom CSS with NO transitions for pagination
+            const style = document.createElement('style');
+            style.textContent = `
+                .swiper-pagination {
+                    bottom: 15px !important;
+                    z-index: 20 !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    width: 100% !important;
+                }
+                
+                .custom-pagination-bullet {
+                    width: 10px !important;
+                    height: 10px !important;
+                    display: inline-block !important;
+                    border-radius: 50% !important;
+                    background: white !important;
+                    opacity: 0.5 !important;
+                    margin: 0 5px !important;
+                    cursor: pointer !important;
+                    transition: none !important;
+                }
+                
+                .custom-pagination-bullet.active {
+                    opacity: 1 !important;
+                    background: #c0a062 !important;
+                }
+                
+                .swiper-slide {
+                    transition: opacity 350ms linear !important;
+                }
+                
+                /* Disable all Swiper pagination styles */
+                .swiper-pagination-bullet,
+                .swiper-pagination-bullet-active {
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Get our custom dots
+            const customDots = document.querySelectorAll('.custom-pagination-bullet');
+            
+            // Initialize Swiper with disabled pagination
+            if (typeof Swiper !== 'undefined') {
+                try {
+                    const heroSwiper = new Swiper('.hero-slider .swiper', {
+                        effect: 'fade',
+                        fadeEffect: {
+                            crossFade: true
+                        },
+                        preloadImages: true,
+                        updateOnImagesReady: true,
+                        loop: true,
+                        loopAdditionalSlides: 0,
+                        simulateTouch: false,
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false
+                        },
+                        speed: 350,
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        // Disable Swiper's pagination
+                        pagination: false,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev'
+                        },
+                        observer: false,
+                        observeParents: false,
+                        on: {
+                            beforeTransitionStart: function() {
+                                // Update custom pagination before the transition starts
+                                updateCustomPagination(this.realIndex);
+                            }
+                        }
+                    });
+                    
+                    // Manually update active dot
+                    function updateCustomPagination(index) {
+                        // Get real index between 0-2
+                        const currentIndex = index % 3;
+                        
+                        // Update all dots
+                        customDots.forEach((dot, i) => {
+                            if (i === currentIndex) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                    }
+                    
+                    // Add click handlers to dots
+                    customDots.forEach((dot, index) => {
+                        dot.addEventListener('click', () => {
+                            // Stop autoplay temporarily
+                            heroSwiper.autoplay.stop();
+                            
+                            // Navigate to slide
+                            heroSwiper.slideToLoop(index);
+                            
+                            // Update active state immediately
+                            updateCustomPagination(index);
+                            
+                            // Restart autoplay after 10 seconds
+                            setTimeout(() => {
+                                heroSwiper.autoplay.start();
+                            }, 10000);
+                        });
+                    });
+                    
+                } catch (e) {
+                    console.error('Error initializing Swiper:', e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
