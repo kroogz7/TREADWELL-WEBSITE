@@ -1,3 +1,4 @@
+"use strict";
 // Main JavaScript for Tyrone Treadwell Fitness Coach Website
 
 // Immediate execution to ensure all sections are visible even before DOMContentLoaded
@@ -297,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Check for console errors
-    console.log('All sections should now be visible.');
+    // console.log('All sections should now be visible.');
     
     // Ensure main content is visible
     const mainContent = document.getElementById('main-content');
@@ -306,35 +307,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mainContent.style.visibility = 'visible';
         mainContent.style.height = 'auto';
         mainContent.style.overflow = 'visible';
-    }
-
-    // Restore slider functionality
-    try {
-        const heroSwiper = new Swiper('.hero-slider .swiper', {
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            autoplay: {
-                delay: 3500,
-                disableOnInteraction: false
-            },
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            preloadImages: true,
-            updateOnImagesReady: true,
-            observer: true,
-            observeParents: true
-        });
-    } catch(e) {
-        console.error('Error initializing Swiper:', e);
     }
 
     // Make sure the video plays automatically
@@ -354,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Force the video to play
         video.play().catch(error => {
-            console.warn('Video autoplay failed:', error);
+            // console.warn('Video autoplay failed:', error);
         });
     }
 
@@ -371,61 +343,76 @@ document.addEventListener('DOMContentLoaded', function() {
     let scrollThreshold = 100;
     
     // Scroll behavior: hide on scroll down, show on scroll up
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.scrollY;
-        
-        // Add scrolled class for background change
-        if (scrollTop > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Hide/show navbar based on scroll direction
-        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-            // Scrolling down & past threshold
-            navbar.classList.add('hidden');
-        } else {
-            // Scrolling up or at top
-            navbar.classList.remove('hidden');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.scrollY;
+            
+            // Add scrolled class for background change
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Hide/show navbar based on scroll direction
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                // Scrolling down & past threshold
+                navbar.classList.add('hidden');
+            } else {
+                // Scrolling up or at top
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
     
-    // Mobile Menu Toggle
+    // --- START OF MOBILE MENU CODE REPLACEMENT ---
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenuIcon = mobileMenuToggle ? mobileMenuToggle.querySelector('i') : null;
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
     const navMenu = document.querySelector('.navbar ul');
     const navLinks = document.querySelectorAll('.navbar a');
+
+    function openMobileMenu() {
+        if (navMenu) navMenu.classList.add('active');
+        if (mobileMenuIcon) mobileMenuIcon.classList.replace('fa-bars', 'fa-times');
+        if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        if (navMenu) navMenu.classList.remove('active');
+        if (mobileMenuIcon) mobileMenuIcon.classList.replace('fa-times', 'fa-bars');
+        if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+    }
     
-    // Open mobile menu
-    if (mobileMenuToggle) {
+    if (mobileMenuToggle && navMenu && mobileMenuIcon) {
         mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            const isActive = navMenu.classList.contains('active');
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
     }
     
-    // Close mobile menu
-    if (mobileMenuClose) {
+    if (mobileMenuClose && navMenu) {
         mobileMenuClose.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            document.body.style.overflow = ''; // Re-enable scrolling
+            closeMobileMenu(); 
         });
     }
     
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Close mobile menu if open
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+            if (navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu(); 
             }
             
-            // Add smooth scrolling to internal links
             if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+    // --- END OF MOBILE MENU CODE REPLACEMENT (Ensure smooth scroll logic below is preserved) ---
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -502,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Force play the video
         videoElement.play().catch(error => {
-            console.warn('Video autoplay failed:', error);
+            // console.warn('Video autoplay failed:', error);
         });
     }
 
@@ -593,41 +580,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize AOS animations
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-    }
-
-    // Initialize Swiper slider if not already done
-    try {
-        if (!window.heroSwiperInitialized) {
-            window.heroSwiperInitialized = true;
-            const heroSwiperInstance = new Swiper('.hero-slider .swiper', {
-                effect: 'fade',
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
-        }
-    } catch(e) {
-        console.error('Error initializing additional Swiper:', e);
-    }
-    
     // Additional smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]:not(.scroll-processed)').forEach(anchor => {
         anchor.classList.add('scroll-processed');
@@ -648,25 +600,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Enhanced mobile menu toggle
-    const menuToggleBtn = document.querySelector('.mobile-menu-toggle:not(.processed)');
-    const menuCloseBtn = document.querySelector('.mobile-menu-close:not(.processed)');
-    const navbarMenu = document.querySelector('nav.navbar ul');
-
-    if (menuToggleBtn && navbarMenu) {
-        menuToggleBtn.classList.add('processed');
-        menuToggleBtn.addEventListener('click', () => {
-            navbarMenu.classList.add('active');
-        });
-    }
-
-    if (menuCloseBtn && navbarMenu) {
-        menuCloseBtn.classList.add('processed');
-        menuCloseBtn.addEventListener('click', () => {
-            navbarMenu.classList.remove('active');
-        });
-    }
 
     // Enhanced force layout fix for hero section
     const heroSectionEl = document.querySelector('.hero:not(.layout-fixed)');
@@ -723,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         videoElementEl.setAttribute('autoplay-processed', 'true');
         videoElementEl.muted = true;
         videoElementEl.play().catch(error => {
-            console.log('Autoplay prevented:', error);
+            // console.log('Autoplay prevented:', error);
         });
     }
 }); 

@@ -1,4 +1,4 @@
-/* Stats Container */ /*website made by Aldren, if you see this u gay*/
+/* Stats Container */
 .stats-container {
     display: flex;
     justify-content: space-around;
@@ -803,20 +803,6 @@ a.cta-button::after,
 .cta-button.secondary .button-text {
     color: black !important;
 }
-
-/* Override any problematic animations - REMOVED */
-/*
-@keyframes ctaButtonFix {
-    0%, 100% { opacity: 1 !important; }
-}
-*/
-
-/* Apply the animation to button text to ensure it stays visible - REMOVED */
-/*
-.cta-button:hover .button-text {
-    animation: ctaButtonFix 0.01s linear infinite !important;
-}
-*/
 
 /* Additional styles for Tyrone Treadwell Fitness Coach Website */
 
@@ -2148,11 +2134,13 @@ main {
 }
 
 /* Hide AOS elements immediately to prevent flicker */
+/*
 [data-aos] {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
 }
+*/
 
 /* Inspirational quote styling */
 .inspiration-quote {
@@ -2352,5 +2340,48 @@ main {
     .single-text-block::after {
         margin: 15px auto 15px 0;
         width: 50px;
+    }
+}
+
+/* Footer Links Styling */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.footer-link {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    position: relative;
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 } 
